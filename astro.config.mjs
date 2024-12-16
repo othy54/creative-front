@@ -6,8 +6,6 @@ import tailwind from '@astrojs/tailwind';
 
 import basicSsl from '@vitejs/plugin-basic-ssl'
 
-import netlify from '@astrojs/netlify';
-
 // @ts-ignore
 const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
@@ -38,5 +36,4 @@ export default defineConfig({
         },
   },
 
-  adapter: netlify()
 });
