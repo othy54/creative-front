@@ -23,14 +23,14 @@ export async function getStaticPaths() {
 const sbApi = useStoryblokApi();
 const { slug } = Astro.params;
 const { data } = await sbApi.get(`cdn/stories/blog/${slug}`, {
-  version: "published",
+    version: import.meta.env.DEV ? 'draft' : 'published',
 });
 
 const story = data.story;
 ---
  
 <Layout title={story.content.metaTags.title} description={story.content.metaTags.description}>
-    <main>
+    <div>
         <StoryblokComponent blok={story.content} />
-    </main>
+    </div>
 </Layout>

@@ -2,10 +2,22 @@
 import { useStoryblokApi } from '@storyblok/astro';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
 import Layout from '../../layouts/Layout.astro';
+import Articles from '../../components/Articles.astro';
+
+const storyblokApi = useStoryblokApi();
+
+const { data } = await storyblokApi.get("cdn/stories", {
+    content_type: "article",
+    version: import.meta.env.DEV ? 'draft' : 'published',
+    starts_with: 'blog/'
+});
+
+const stories = data.stories;
+
 ---
 
 <Layout>
-    <main>
-        list post
-    </main>
+    <div>
+        <Articles articles={stories} />
+    </div>
 </Layout>
