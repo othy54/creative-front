@@ -1,26 +1,30 @@
 ---
-import { storyblokEditable } from '@storyblok/astro';
-import Content from './Content.astro';
+import { storyblokEditable } from "@storyblok/astro";
+import Content from "./Content.astro";
 
 const { blok } = Astro.props;
 // console.log(blok)
 ---
-  
+
 <article {...storyblokEditable(blok)}>
-   <div class="grid grid-cols-2 gap-x-8">
-     <div>
+  <div class="grid grid-cols-2 gap-x-8">
+    <div>
       <h1 class="text-6xl text-mocha-900 font-bold mb-4">
         {blok.title}
       </h1>
       <p class="text-xl text-[#1d243d] font-[450] mb-4 text-balance">
         {blok.description}
       </p>
-     </div>
-     <div>
-      <img class="object-cover h-[300px] object-center " width="624" height="300" src="https://picsum.photos/800/800" alt="" />
-     </div>
-   </div>
-   <Content bloks={blok.content} />
+    </div>
+    <div>
+      <img
+        class="object-cover h-[300px] object-center"
+        width="624"
+        height="300"
+        src="https://picsum.photos/800/800"
+        alt=""
+      />
+    </div>
+  </div>
+  <Content bloks={blok.content} />
 </article>
-
-

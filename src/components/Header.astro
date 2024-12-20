@@ -1,21 +1,25 @@
 ---
-import Logo from '../assets/logo-creative-front.svg';
+import Logo from "../assets/logo-creative-front.svg";
 
 const menuItems = [
     {
-        label: 'Articles',
-        link: '/blog'
+        label: "Articles",
+        link: "/blog",
     },
     {
-        label: 'Catégories',
-        link: '/categories'
+        label: "Catégories",
+        link: "/categories",
     },
-]
+];
 ---
+
 <header class="py-6 flex justify-between">
     <div>
         <a href="/">
-            <Logo width="250" height="24" />
+            <Logo
+                width="250"
+                height="24"
+            />
         </a>
     </div>
     <nav>
@@ -23,9 +27,7 @@ const menuItems = [
             {
                 menuItems.map((item) => (
                     <li>
-                        <a href={item.link}>
-                            {item.label}
-                        </a>
+                        <a href={item.link}>{item.label}</a>
                     </li>
                 ))
             }
