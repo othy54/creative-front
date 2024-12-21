@@ -1,15 +1,17 @@
 ---
-type Article = {
+interface Article {
     slug: string;
     content: {
         title: string;
         description: string;
     };
-};
+}
+
+interface Articles {
+    [key: string]: Article;
+}
 
 const { articles } = Astro.props;
-
-// console.log(articles)
 ---
 
 <div>
