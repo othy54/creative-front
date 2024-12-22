@@ -1,9 +1,25 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
 import Content from "./Content.astro";
+import Summary from "../components/Summary.astro";
+import slugify from "slugify";
+import type { SummaryItems } from "../types/typesProps";
 
 const { blok } = Astro.props;
-// console.log(blok)
+
+const summary: SummaryItems[] = [];
+
+interface blokTitle {
+  component: string;
+  title: string;
+}
+
+blok?.content.forEach((item: blokTitle) => {
+  if (item.component === "title_two") {
+    summary.push({ label: item.title, slug: slugify(item.title) });
+  }
+});
+// console.log(blok);
 ---
 
 <article {...storyblokEditable(blok)}>
@@ -26,5 +42,15 @@ const { blok } = Astro.props;
       />
     </div>
   </div>
-  <Content bloks={blok.content} />
+  <div class="mt-20 grid grid-cols-12 gap-24">
+    <aside
+      class="col-span-4 border-mocha-500 border-opacity-20 border-[1px] p-6 rounded-md self-start"
+    >
+      <p class="text-xl font-bold">Sommaire</p>
+      <Summary summary={summary} />
+    </aside>
+    <div class="col-span-8">
+      <Content bloks={blok.content} />
+    </div>
+  </div>
 </article>

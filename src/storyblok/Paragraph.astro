@@ -11,7 +11,6 @@ export interface Props {
 }
 
 const { blok } = Astro.props;
-const { text_paragraph } = blok;
 ---
 
 <RichTextRenderer
@@ -25,7 +24,7 @@ const { text_paragraph } = blok;
         nodes: {
             paragraph: () => ({
                 props: {
-                    class: "text-lg",
+                    class: "text-lg mb-6",
                 },
             }),
         },
@@ -38,6 +37,6 @@ const { text_paragraph } = blok;
             }),
         },
     }}
-    content={text_paragraph}
+    content={blok.text_paragraph}
     {...storyblokEditable(blok)}
 />

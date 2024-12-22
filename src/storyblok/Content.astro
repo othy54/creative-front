@@ -5,9 +5,6 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 const { bloks } = Astro.props;
 ---
 
-<div
-    class="mt-20"
-    {...storyblokEditable(bloks)}
->
+<div {...storyblokEditable(bloks)}>
     {bloks.map((blok: any) => <StoryblokComponent blok={blok} />)}
 </div>

@@ -1,9 +1,17 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
+import slugify from "slugify";
 
 const { blok } = Astro.props;
+const slug = (label: string): string => {
+    return slugify(label);
+};
 ---
 
-<h2 {...storyblokEditable(blok)}>
+<h2
+    id={slug(blok.title)}
+    class="text-5xl font-bold mb-8 mt-16"
+    {...storyblokEditable(blok)}
+>
     {blok.title}
 </h2>
