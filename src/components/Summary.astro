@@ -13,7 +13,9 @@ const { summary } = Astro.props;
         {
             summary.map((item) => (
                 <a href={`#${item.slug}`}>
-                    <li>{item.label}</li>
+                    <li class="hover:text-mocha-500 hover:underline w-fit">
+                        {item.label}
+                    </li>
                 </a>
             ))
         }
