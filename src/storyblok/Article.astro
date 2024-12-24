@@ -4,7 +4,6 @@ import Content from "./Content.astro";
 import Summary from "../components/Summary.astro";
 import slugify from "slugify";
 import type { SummaryItems } from "../types/typesProps";
-import { Image } from "astro:assets";
 
 const { blok } = Astro.props;
 
@@ -20,48 +19,42 @@ blok?.content.forEach((item: blokTitle) => {
     summary.push({ label: item.title, slug: slugify(item.title) });
   }
 });
-// console.log(blok);
 ---
 
 <article {...storyblokEditable(blok)}>
-  <div class="grid grid-cols-2 gap-x-8">
-    <div>
-      <h1 class="text-6xl text-mocha-900 font-bold mb-4">
+  <div class="grid grid-cols-12 lg:gap-x-8">
+    <div class="col-span-12 lg:col-span-6">
+      <h1
+        class="text-4xl md:text-5xl lg:text-6xl text-mocha-900 font-bold mb-4"
+      >
         {blok.title}
       </h1>
-      <p class="text-xl text-mocha-800 font-[450] mb-4 text-balance">
+      <p
+        class="md:text-lg lg:text-xl text-mocha-800 font-[450] mb-6 text-balance"
+      >
         {blok.description}
       </p>
     </div>
-    <div>
+    <div class="col-span-12 lg:col-span-6">
       <img
-        class="object-cover h-[300px] object-center"
+        class="object-cover h-[150px] md:h-[210px] lg:h-[300px] object-center md:w-full"
         width="624"
         height="300"
         src={blok.imageHero?.filename}
         alt=""
       />
-      <!-- <Image
-        class="object-cover h-[300px] object-center"
-        width="624"
-        height="300"
-        src={blok?.imageHero?.filename}
-        alt="effet text reveal"
-        layout="responsive"
-        loading="eager"
-      /> -->
     </div>
   </div>
-  <div class="mt-20 grid grid-cols-12 gap-24">
-    <aside class="col-span-4">
+  <div class="mt-20 grid grid-cols-12 lg:gap-24">
+    <aside class="col-span-12 lg:col-span-4">
       <div
-        class="border-mocha-500 border-opacity-20 border-[1px] p-6 rounded-md sticky top-10"
+        class="border-mocha-500 border-opacity-20 border-[1px] p-6 rounded-md sticky top-10 mb-8 lg:mb-0"
       >
         <p class="text-xl font-bold">Sommaire</p>
         <Summary summary={summary} />
       </div>
     </aside>
-    <div class="col-span-8">
+    <div class="col-span-12 lg:col-span-8">
       <Content bloks={blok.content} />
     </div>
   </div>

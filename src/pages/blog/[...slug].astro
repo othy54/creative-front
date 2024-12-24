@@ -32,6 +32,7 @@ const story = data.story;
 <Layout
     title={story.content.metaTags.title}
     description={story.content.metaTags.description}
+    imageToPreload={story.content.imageHero?.filename}
 >
     <div>
         <StoryblokComponent blok={story.content} />

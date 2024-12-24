@@ -1,7 +1,13 @@
 ---
 import Header from "../components/Header.astro";
 
-const { title, description } = Astro.props;
+interface Props {
+   title: string;
+   description: string;
+   imageToPreload?: string;
+}
+
+const { title, description, imageToPreload } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,17 +29,26 @@ const { title, description } = Astro.props;
          href="/fonts/Satoshi-Variable.woff2"
          crossorigin
       />
-      <slot name="image-preload" />
+      {
+         imageToPreload && (
+            <link
+               rel="preload"
+               as="image"
+               href={imageToPreload}
+            />
+         )
+      }
+
       <link
          rel="icon"
          type="image/svg+xml"
          href="/favicon.svg"
       />
    </head>
-   <body class="pt-8 px-8 bg-mocha-100">
+   <body class="pt-4 lg:pt-8 px-6 lg:px-8 bg-mocha-100">
       <div class="max-w-[1280px] mx-auto">
          <Header />
-         <main class="mt-32">
+         <main class="mt-16 lg:mt-32">
             <slot />
          </main>
       </div>

@@ -8,16 +8,12 @@ interface Props {
 const { summary } = Astro.props;
 ---
 
-<Fragment>
-    <ul class="mt-4">
-        {
-            summary.map((item) => (
-                <a href={`#${item.slug}`}>
-                    <li class="hover:text-mocha-500 hover:underline w-fit">
-                        {item.label}
-                    </li>
-                </a>
-            ))
-        }
-    </ul>
-</Fragment>
+<ul class="mt-4">
+    {
+        summary.map((item) => (
+            <li class="hover:text-mocha-500 hover:underline w-fit">
+                <a href={`#${item.slug}`}>{item.label}</a>
+            </li>
+        ))
+    }
+</ul>

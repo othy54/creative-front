@@ -13,17 +13,20 @@ const menuItems = [
 ];
 ---
 
-<header class="py-6 flex justify-between">
+<header class="py-6 flex justify-between items-center">
     <div>
         <a href="/">
             <Logo
+                class="max-w-[130px] md:max-w-[180px] lg:max-w-[250px]"
                 width="250"
                 height="24"
             />
         </a>
     </div>
     <nav>
-        <ul class="flex space-x-6 font-[450] text-[17px]">
+        <ul
+            class="flex space-x-3 lg:space-x-6 font-[450] text-sm md:text-base lg:text-[17px]"
+        >
             {
                 menuItems.map((item) => (
                     <li>
