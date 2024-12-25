@@ -4,6 +4,9 @@ interface Article {
     content: {
         title: string;
         description: string;
+        imageHero: {
+            filename: string;
+        };
     };
 }
 
@@ -23,7 +26,7 @@ const { articles } = Astro.props;
                         <a href={`/blog/${article.slug}`}>
                             <img
                                 class="w-full h-[300px] object-cover"
-                                src="https://picsum.photos/800/800"
+                                src={article.content.imageHero?.filename}
                                 alt=""
                             />
                         </a>

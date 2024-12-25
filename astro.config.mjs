@@ -23,6 +23,7 @@ export default defineConfig({
         content: "storyblok/Content",
         paragraph: "storyblok/Paragraph",
         titleTwo: "storyblok/TitleTwo",
+        titleThree: "storyblok/TitleThree",
       },
     }),
     tailwind(),

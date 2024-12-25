@@ -15,7 +15,7 @@ interface blokTitle {
 }
 
 blok?.content.forEach((item: blokTitle) => {
-  if (item.component === "title_two") {
+  if (item.component === "title_two" || item.component === "title_three") {
     summary.push({ label: item.title, slug: slugify(item.title) });
   }
 });
