@@ -6,12 +6,18 @@ interface Props {
 }
 
 const { summary } = Astro.props;
+console.log(summary);
 ---
 
-<ul class="mt-4">
+<ul class="mt-4 space-y-2">
     {
         summary.map((item) => (
-            <li class="hover:text-mocha-500 hover:underline w-fit">
+            <li
+                class:list={[
+                    "hover:text-mocha-500 hover:underline w-fit font-medium",
+                    item.component === "title_three" && "text-sm  pl-4",
+                ]}
+            >
                 <a href={`#${item.slug}`}>{item.label}</a>
             </li>
         ))

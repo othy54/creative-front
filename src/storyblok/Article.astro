@@ -16,9 +16,15 @@ interface blokTitle {
 
 blok?.content.forEach((item: blokTitle) => {
   if (item.component === "title_two" || item.component === "title_three") {
-    summary.push({ label: item.title, slug: slugify(item.title) });
+    summary.push({
+      label: item.title,
+      slug: slugify(item.title),
+      component: item.component,
+    });
   }
 });
+
+// console.log(blok);
 ---
 
 <article {...storyblokEditable(blok)}>
@@ -37,7 +43,7 @@ blok?.content.forEach((item: blokTitle) => {
     </div>
     <div class="col-span-12 lg:col-span-6">
       <img
-        class="object-cover h-[150px] md:h-[210px] lg:h-[300px] object-center md:w-full"
+        class="object-cover h-[150px] md:h-[210px] lg:h-[300px] object-center md:w-full rounded-lg"
         width="624"
         height="300"
         src={blok.imageHero?.filename}
