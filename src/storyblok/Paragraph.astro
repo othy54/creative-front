@@ -35,6 +35,11 @@ const { blok } = Astro.props;
                     class: "font-semibold",
                 },
             }),
+            code: () => ({
+                props: {
+                    class: "text-[0.95rem] bg-black bg-opacity-10 py-1 px-2 rounded-[0.2rem]",
+                },
+            }),
         },
     }}
     content={blok.text_paragraph}

@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { summary } = Astro.props;
-console.log(summary);
+// console.log(summary);
 ---
 
 <ul class="mt-4 space-y-2">
@@ -15,7 +15,8 @@ console.log(summary);
             <li
                 class:list={[
                     "hover:text-mocha-500 hover:underline w-fit font-medium",
-                    item.component === "title_three" && "text-sm  pl-4",
+                    item.component === "title_three" &&
+                        "text-sm pl-3 opacity-65",
                 ]}
             >
                 <a href={`#${item.slug}`}>{item.label}</a>
