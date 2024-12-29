@@ -25,7 +25,8 @@ export default defineConfig({
         titleTwo: "storyblok/TitleTwo",
         titleThree: "storyblok/TitleThree",
         codeBlock: "storyblok/CodeBlock",
-        codePen: "storyblok/CodePen"
+        codePen: "storyblok/CodePen",
+        image: "storyblok/Picture",
       },
     }),
     tailwind(),

@@ -4,6 +4,9 @@ import { storyblokEditable } from "@storyblok/astro";
 const { blok } = Astro.props;
 ---
 
-<div {...storyblokEditable(blok)}>
+<div
+    class="mb-7 rounded-lg overflow-clip"
+    {...storyblokEditable(blok)}
+>
     <div set:html={blok.code} />
 </div>

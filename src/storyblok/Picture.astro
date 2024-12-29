@@ -1,0 +1,31 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+const url: string = blok.image?.filename;
+
+const dimensions = {
+    width: url.split("/")[5].split("x")[0],
+    height: url.split("/")[5].split("x")[1],
+};
+
+const getHeightfromRatio = (): number => {
+    return Math.ceil(
+        (779 * parseInt(dimensions.height)) / parseInt(dimensions.width),
+    );
+};
+---
+
+<img
+    {...storyblokEditable}
+    class="rounded-lg mb-7"
+    loading="lazy"
+    srcset={blok.image?.filename +
+        "/m/779x0/filters:quality(100), " +
+        blok.image?.filename +
+        `/m/${parseInt(dimensions.width) < 1558 ? dimensions.width : 1558}x0/filters:quality(100) 2x`}
+    src={blok.image?.filename + `/m/779x0/filters:quality(100)`}
+    width="779"
+    height={getHeightfromRatio()}
+    alt={blok.image?.alt}
+/>
