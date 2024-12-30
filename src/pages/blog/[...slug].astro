@@ -32,7 +32,7 @@ const story = data.story;
 <Layout
     title={story.content.metaTags.title}
     description={story.content.metaTags.description}
-    imageToPreload={story.content.imageHero?.filename}
+    imageToPreload={story.content.imageHero?.filename + "/m/624x0/"}
 >
     <div>
         <StoryblokComponent blok={story.content} />
@@ -47,7 +47,7 @@ const story = data.story;
                     script.src =
                         "https://public.codepenassets.com/embed/index.js";
                     document.querySelector("head")?.appendChild(script);
-                    io.unobserve(entry.target);
+                    io.disconnect();
                 }
             });
         },
