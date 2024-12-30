@@ -16,16 +16,23 @@ const getHeightfromRatio = (): number => {
 };
 ---
 
-<img
-    {...storyblokEditable}
-    class="rounded-lg mb-7"
-    loading="lazy"
-    srcset={blok.image?.filename +
-        "/m/779x0/filters:quality(100), " +
-        blok.image?.filename +
-        `/m/${parseInt(dimensions.width) < 1558 ? dimensions.width : 1558}x0/filters:quality(100) 2x`}
-    src={blok.image?.filename + `/m/779x0/filters:quality(100)`}
-    width="779"
-    height={getHeightfromRatio()}
-    alt={blok.image?.alt}
-/>
+<figure class="mb-7">
+    <img
+        {...storyblokEditable}
+        class="rounded-lg mb-3"
+        loading="lazy"
+        srcset={blok.image?.filename +
+            "/m/779x0/filters:quality(100), " +
+            blok.image?.filename +
+            `/m/${parseInt(dimensions.width) < 1558 ? dimensions.width : 1558}x0/filters:quality(100) 2x`}
+        src={blok.image?.filename + `/m/779x0/filters:quality(100)`}
+        width="779"
+        height={getHeightfromRatio()}
+        alt={blok.image?.alt}
+    />
+    {
+        blok.legend && (
+            <figcaption class="text-center italic">{blok.legend}</figcaption>
+        )
+    }
+</figure>

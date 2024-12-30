@@ -15,11 +15,10 @@ const { blok } = Astro.props;
 const codeBlock = hljs.highlight(blok.code.code, {
     language: blok.code.language,
 }).value;
-// console.log(blok);
 ---
 
 <div
-    class="code hljs"
+    class="code hljs text-sm lg:text-base"
     {...storyblokEditable(blok)}
 >
     <pre>
