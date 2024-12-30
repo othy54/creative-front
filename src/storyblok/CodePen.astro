@@ -1,6 +1,5 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
-
 const { blok } = Astro.props;
 ---
 
@@ -9,9 +8,4 @@ const { blok } = Astro.props;
     {...storyblokEditable(blok)}
 >
     <div set:html={blok.code} />
-    <script
-        async
-        src="https://public.codepenassets.com/embed/index.js"
-    >
-    </script>
 </div>

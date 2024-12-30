@@ -38,3 +38,25 @@ const story = data.story;
         <StoryblokComponent blok={story.content} />
     </div>
 </Layout>
+<script>
+    const io = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const script = document.createElement("script");
+                    script.src =
+                        "https://public.codepenassets.com/embed/index.js";
+                    document.querySelector("head")?.appendChild(script);
+                    io.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            rootMargin: "0% 0% 50% 0%",
+        },
+    );
+
+    const codepen = document.querySelector(".codepen") as HTMLElement;
+
+    io.observe(codepen);
+</script>
