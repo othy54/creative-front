@@ -9,10 +9,17 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^4.1.2",
     "@astrojs/tailwind": "^5.1.3",
     "@storyblok/astro": "^5.0.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "astro": "^5.0.3",
+    "astro-lenis": "^1.0.0",
     "highlight.js": "^11.11.1",
+    "motion": "^11.15.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "slugify": "^1.6.6",
     "storyblok-rich-text-astro-renderer": "^2.2.2",
     "tailwindcss": "^3.4.16",
@@ -31,6 +38,9 @@
       "astro": "$astro"
     },
     "storyblok-rich-text-astro-renderer": {
+      "astro": "$astro"
+    },
+    "astro-lenis": {
       "astro": "$astro"
     }
   }

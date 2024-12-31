@@ -56,7 +56,11 @@ const story = data.story;
         },
     );
 
-    const codepen = document.querySelector(".codepen") as HTMLElement;
+    const codepens = document.querySelectorAll(
+        ".codepen",
+    ) as NodeListOf<Element>;
 
-    io.observe(codepen);
+    codepens.forEach((codepen) => {
+        io.observe(codepen);
+    });
 </script>

@@ -5,6 +5,10 @@ import { loadEnv } from "vite";
 import tailwind from "@astrojs/tailwind";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 
+import lenis from "astro-lenis";
+
+import react from "@astrojs/react";
+
 // @ts-ignore
 const env = loadEnv("", process.cwd(), "STORYBLOK");
 
@@ -30,6 +34,8 @@ export default defineConfig({
       },
     }),
     tailwind(),
+    react(),
+    lenis(),
   ],
 
   vite: {

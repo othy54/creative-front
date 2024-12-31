@@ -1,6 +1,6 @@
 ---
 import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Footer from "../components/Footer/Footer.tsx";
 
 interface Props {
    title: string;
@@ -58,7 +58,7 @@ const { title, description, imageToPreload } = Astro.props;
          >
             <slot />
          </main>
-         <Footer />
+         <Footer client:visible />
       </div>
    </body>
 </html>
@@ -78,6 +78,13 @@ const { title, description, imageToPreload } = Astro.props;
       font-display: swap;
    }
 
+   @font-face {
+      font-family: "Clash Display";
+      src: url("/fonts/ClashDisplay-Variable.woff2") format("woff2");
+      font-style: normal;
+      font-display: swap;
+   }
+
    html,
    body {
       margin: 0;
@@ -85,5 +92,22 @@ const { title, description, imageToPreload } = Astro.props;
       height: 100%;
       font-family: Satoshi, sans-serif;
       scroll-behavior: smooth;
+   }
+
+   html.lenis,
+   html.lenis body {
+      height: auto;
+   }
+   .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+   }
+   .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+   }
+   .lenis.lenis-stopped {
+      overflow: clip;
+   }
+   .lenis.lenis-smooth iframe {
+      pointer-events: none;
    }
 </style>
