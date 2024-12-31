@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Article {
     slug: string;
     content: {
@@ -14,20 +16,56 @@ interface Articles {
     [key: string]: Article;
 }
 
+const views = [
+    {
+        nameIcon: "material-symbols-light:grid-view-rounded",
+        dataView: "grid",
+    },
+    {
+        nameIcon: "material-symbols-light:lists-rounded",
+        dataView: "list",
+    },
+];
+
 const { articles } = Astro.props;
 ---
 
 <div>
-    <ul class="grid grid-cols-3 gap-4">
+    <div class="flex justify-end">
+        <ul class="flex mb-4 border-mocha-700 border-[1px] rounded-sm">
+            {
+                views.map((view) => (
+                    <li
+                        data-view={view.dataView}
+                        class="view-button p-1 border-mocha-700 border-r-[1px] last:border-r-0 text-mocha-700 hover:bg-mocha-700 hover:text-mocha-100 cursor-pointer"
+                    >
+                        <Icon
+                            name={view.nameIcon}
+                            size={25}
+                        />
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+    <ul class="articles">
         {
             articles.map((article: Article) => (
                 <li class="border-[#00000010] border-[1px] rounded-lg overflow-clip flex">
                     <div class="card flex flex-col justify-between bg-white">
-                        <a href={`/blog/${article.slug}`}>
+                        <a
+                            href={`/blog/${article.slug}`}
+                            class="block"
+                        >
                             <img
-                                class="w-full h-[300px] object-cover"
-                                src={article.content.imageHero?.filename}
-                                alt=""
+                                class="image-hero w-full h-[300px] object-cover"
+                                width="382"
+                                height="300"
+                                src={
+                                    article.content.imageHero?.filename +
+                                    "/m/382x0"
+                                }
+                                alt="image hero"
                             />
                         </a>
                         <div class="px-6 py-8 flex h-full">
@@ -56,3 +94,50 @@ const { articles } = Astro.props;
         }
     </ul>
 </div>
+<style>
+    .view--active {
+        @apply text-mocha-100 bg-mocha-700;
+    }
+
+    .articles {
+        @apply grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4;
+    }
+
+    .articles--list {
+        @apply grid grid-cols-1;
+
+        & .card {
+            @apply grid grid-cols-12;
+
+            & > a {
+                @apply col-span-4;
+                flex-grow: 2;
+            }
+
+            & > div {
+                @apply col-span-8;
+            }
+        }
+    }
+</style>
+
+<script>
+    const views = document.querySelectorAll(".view-button");
+    const articles = document.querySelector(".articles");
+
+    views[0].classList.add("view--active");
+
+    views.forEach((view) => {
+        view.addEventListener("click", () => {
+            views.forEach((v) => {
+                v.classList.remove("view--active");
+            });
+            view.classList.add("view--active");
+            if (view.getAttribute("data-view") === "list") {
+                articles?.classList.add("articles--list");
+            } else {
+                articles?.classList.remove("articles--list");
+            }
+        });
+    });
+</script>

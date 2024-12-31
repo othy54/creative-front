@@ -17,9 +17,9 @@ export default function Footer() {
     const filter = useMotionTemplate`blur(${blurValue}px)`;
 
     return (
-        <footer ref={footer} className="bg-mocha-500 mt-32 p-10">
+        <footer ref={footer} className="bg-mocha-500 mt-32 py-5 lg:py-10">
             <div
-                className={styles.container + " max-w-[1280px] h-[40vh] mx-auto pt-4 lg:pt-10 px-6 lg:px-8 flex justify-center items-center"}
+                className={styles.container + " max-w-[1280px] min-h-[40vh] mx-auto pt-4 lg:pt-10 px-6 lg:px-8 flex justify-center items-center"}
             >
                 <div className={styles.wrapper}>
                     <motion.div className={styles.logo} style={{ filter }}>

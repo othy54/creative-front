@@ -9,6 +9,8 @@ import lenis from "astro-lenis";
 
 import react from "@astrojs/react";
 
+import icon from "astro-icon";
+
 // @ts-ignore
 const env = loadEnv("", process.cwd(), "STORYBLOK");
 
@@ -19,28 +21,24 @@ export default defineConfig({
     svg: true,
   },
 
-  integrations: [
-    storyblok({
-      accessToken: env.STORYBLOK_TOKEN,
-      components: {
-        article: "storyblok/Article",
-        content: "storyblok/Content",
-        paragraph: "storyblok/Paragraph",
-        titleTwo: "storyblok/TitleTwo",
-        titleThree: "storyblok/TitleThree",
-        codeBlock: "storyblok/CodeBlock",
-        codePen: "storyblok/CodePen",
-        image: "storyblok/Picture",
-      },
-    }),
-    tailwind(),
-    react(),
-    lenis(),
-  ],
+  integrations: [storyblok({
+    accessToken: env.STORYBLOK_TOKEN,
+    components: {
+      article: "storyblok/Article",
+      content: "storyblok/Content",
+      paragraph: "storyblok/Paragraph",
+      titleTwo: "storyblok/TitleTwo",
+      titleThree: "storyblok/TitleThree",
+      codeBlock: "storyblok/CodeBlock",
+      codePen: "storyblok/CodePen",
+      image: "storyblok/Picture",
+    },
+  }), tailwind(), react(), lenis(), icon()],
 
   vite: {
     plugins: [basicSsl()],
     server: {
+      // @ts-ignore
       https: true,
     },
   },

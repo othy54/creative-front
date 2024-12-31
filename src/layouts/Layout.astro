@@ -3,12 +3,16 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer/Footer.tsx";
 
 interface Props {
-   title: string;
-   description: string;
+   title?: string;
+   description?: string;
    imageToPreload?: string;
 }
 
-const { title, description, imageToPreload } = Astro.props;
+const {
+   title = "CREATIVE-FRONT | Le blog pour les passionés du creative dev et web design",
+   description = "CREATIVE-FRONT est le blog dédié aux passionnés de web design et de creative development. Explorez les dernières tendances, astuces, et techniques pour créer des expériences web innovantes et esthétiques.",
+   imageToPreload,
+} = Astro.props;
 ---
 
 <!doctype html>
