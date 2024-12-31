@@ -13,8 +13,9 @@ export default function Footer() {
     });
 
     const blurValue = useTransform(scrollYProgress, [0, 1], [100, 0]);
-
     const filter = useMotionTemplate`blur(${blurValue}px)`;
+
+    const year = new Date();
 
     return (
         <footer ref={footer} className="bg-mocha-500 mt-32 py-5 lg:py-10">
@@ -25,6 +26,12 @@ export default function Footer() {
                     <motion.div className={styles.logo} style={{ filter }}>
                         CREATIVE-FRONT
                     </motion.div>
+                </div>
+            </div>
+            <div className="max-w-[1280px] mx-auto">
+                <hr className="border-mocha-600" />
+                <div className="mt-2 text-right">
+                    © {year.getFullYear()} CREATIVE-FRONT
                 </div>
             </div>
         </footer>

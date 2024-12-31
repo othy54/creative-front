@@ -123,7 +123,7 @@ const { articles } = Astro.props;
 
 <script>
     const views = document.querySelectorAll(".view-button");
-    const articles = document.querySelector(".articles");
+    const articleEl = document.querySelector(".articles");
 
     views[0].classList.add("view--active");
 
@@ -134,9 +134,9 @@ const { articles } = Astro.props;
             });
             view.classList.add("view--active");
             if (view.getAttribute("data-view") === "list") {
-                articles?.classList.add("articles--list");
+                articleEl?.classList.add("articles--list");
             } else {
-                articles?.classList.remove("articles--list");
+                articleEl?.classList.remove("articles--list");
             }
         });
     });
