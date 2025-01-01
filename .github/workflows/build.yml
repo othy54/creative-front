@@ -25,4 +25,9 @@ jobs:
         run: npm install
 
       - name: Build Astro project
+        env:
+          NODE_ENV: production
+          CREATIVE_FRONT_ENV: ${{ secrets.STORYBLOK_TOKEN }}
         run: npm run build
+
+       
