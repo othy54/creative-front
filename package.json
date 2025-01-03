@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.1.2",
-    "@astrojs/tailwind": "^5.1.3",
+    "@astrojs/tailwind": "^5.1.4",
     "@iconify-json/material-symbols-light": "^1.2.12",
-    "@storyblok/astro": "^5.0.2",
+    "@storyblok/astro": "^5.1.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
-    "astro": "^5.0.3",
+    "astro": "^5.1.2",
     "astro-icon": "^1.1.5",
     "astro-lenis": "^1.0.0",
     "highlight.js": "^11.11.1",
@@ -31,19 +31,5 @@
     "@vitejs/plugin-basic-ssl": "^1.2.0",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1"
-  },
-  "overrides": {
-    "@storyblok/astro": {
-      "astro": "$astro"
-    },
-    "@astrojs/tailwind": {
-      "astro": "$astro"
-    },
-    "storyblok-rich-text-astro-renderer": {
-      "astro": "$astro"
-    },
-    "astro-lenis": {
-      "astro": "$astro"
-    }
   }
 }
