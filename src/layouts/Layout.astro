@@ -1,6 +1,6 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer/Footer.tsx";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer/Footer.tsx";
 
 interface Props {
    title?: string;
@@ -54,7 +54,7 @@ const {
          href="/favicon.svg"
       />
    </head>
-   <body class="bg-mocha-100">
+   <body class="bg-mocha-100 dark:bg-mocha-900">
       <div>
          <Header />
          <main

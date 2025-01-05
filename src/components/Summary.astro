@@ -1,5 +1,5 @@
 ---
-import type { SummaryItems } from "../types/typesProps";
+import type { SummaryItems } from "@myTypes/typesProps";
 
 interface Props {
     summary: SummaryItems[];
@@ -14,7 +14,7 @@ const { summary } = Astro.props;
         summary.map((item) => (
             <li
                 class:list={[
-                    "hover:text-mocha-500 hover:underline w-fit font-medium",
+                    "text-mocha-900 dark:text-mocha-100 hover:text-mocha-500 hover:underline w-fit font-medium",
                     item.component === "title_three" &&
                         "text-sm pl-3 opacity-65",
                 ]}
