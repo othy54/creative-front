@@ -29,12 +29,12 @@ blok?.content.forEach((item: blokTitle) => {
   <div class="grid grid-cols-12 lg:gap-x-8">
     <div class="col-span-12 lg:col-span-6">
       <h1
-        class="text-4xl md:text-5xl lg:text-6xl text-mocha-900 font-bold mb-4"
+        class="text-4xl md:text-5xl lg:text-6xl text-mocha-900 dark:text-mocha-100 font-bold mb-4"
       >
         {blok.title}
       </h1>
       <p
-        class="md:text-lg lg:text-xl text-mocha-800 font-[450] mb-6 text-balance"
+        class="md:text-lg lg:text-xl text-mocha-900 dark:text-mocha-100 font-[450] mb-6 text-balance"
       >
         {blok.description}
       </p>
@@ -52,9 +52,11 @@ blok?.content.forEach((item: blokTitle) => {
   <div class="mt-20 grid grid-cols-12 lg:gap-24">
     <aside class="col-span-12 lg:col-span-4">
       <div
-        class="border-mocha-500 border-opacity-20 border-[1px] p-6 rounded-md sticky top-10 mb-8 lg:mb-0"
+        class="border-mocha-500 dark:border-mocha-200 border-opacity-20 border-[1px] p-6 rounded-md sticky top-10 mb-8 lg:mb-0"
       >
-        <p class="text-xl font-bold">Sommaire</p>
+        <p class="text-xl font-bold text-mocha-900 dark:text-mocha-100">
+          Sommaire
+        </p>
         <Summary summary={summary} />
       </div>
     </aside>

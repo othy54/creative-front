@@ -1,5 +1,6 @@
 ---
-import Logo from "../assets/logo-creative-front.svg";
+import Logo from "@assets/logo-creative-front.svg";
+import IconTheme from "./IconTheme.astro";
 
 const menuItems = [
     {
@@ -22,23 +23,24 @@ const menuItems = [
             aria-label="accueil"
         >
             <Logo
-                class="max-w-[130px] md:max-w-[180px] lg:max-w-[250px]"
+                class="max-w-[130px] md:max-w-[180px] lg:max-w-[250px] fill-mocha-900 dark:fill-mocha-100"
                 width="250"
                 height="24"
             />
         </a>
     </div>
-    <nav>
+    <nav class="flex gap-4">
         <ul
-            class="flex space-x-3 lg:space-x-6 font-[450] text-sm md:text-base lg:text-[17px]"
+            class="flex space-x-3 lg:space-x-6 font-[450] text-sm md:text-base lg:text-[17px] items-center"
         >
             {
                 menuItems.map((item) => (
-                    <li>
+                    <li class="text-mocha-900 dark:text-mocha-100">
                         <a href={item.link}>{item.label}</a>
                     </li>
                 ))
             }
         </ul>
+        <IconTheme />
     </nav>
 </header>

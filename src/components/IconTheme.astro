@@ -1,0 +1,65 @@
+<div
+    class="icon-theme-wrapper cursor-pointer border-mocha-900 dark:border-mocha-100 border-[1px] rounded-full p-1 group hover:bg-mocha-900 dark:hover:bg-mocha-100"
+>
+    <svg
+        class="w-[18px] h-[18px]"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+    >
+        <path
+            class="dark-mode"
+            d="M12.058 20q-3.334 0-5.667-2.333T4.058 12q0-3.039 1.98-5.27t4.904-2.634q.081 0 .159.006t.153.017q-.506.706-.801 1.57T10.158 7.5q0 2.667 1.866 4.533t4.534 1.867q.951 0 1.813-.295t1.548-.801q.012.075.017.153t.006.159q-.384 2.923-2.615 4.903T12.057 20"
+        >
+        </path>
+        <path
+            class="light-mode"
+            d="M12 16q-1.671 0-2.835-1.164Q8 13.67 8 12t1.165-2.835T12 8t2.836 1.165T16 12t-1.164 2.836T12 16m-7-3.5H1.5v-1H5zm17.5 0H19v-1h3.5zM11.5 5V1.5h1V5zm0 17.5V19h1v3.5zM6.746 7.404l-2.16-2.098l.695-.745l2.111 2.135zM18.72 19.439l-2.117-2.141l.652-.702l2.16 2.098zM16.596 6.745l2.098-2.16l.745.695l-2.135 2.111zM4.562 18.72l2.14-2.117l.664.652l-2.08 2.179z"
+        >
+        </path>
+    </svg>
+</div>
+<style>
+    .dark-mode {
+        @apply fill-mocha-900 group-hover:fill-mocha-100 dark:fill-transparent;
+    }
+
+    .light-mode {
+        @apply fill-transparent dark:fill-mocha-100 group-hover:dark:fill-mocha-900;
+    }
+</style>
+<script is:inline>
+    const htmlEl = document.documentElement;
+    const theme = (() => {
+        if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("theme")
+        ) {
+            return localStorage.getItem("theme") ?? "light";
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return "dark";
+        }
+        return "light";
+    })();
+
+    if (theme === "light") {
+        htmlEl.classList.remove("dark");
+    } else {
+        htmlEl.classList.add("dark");
+    }
+
+    window.localStorage.setItem("theme", theme);
+
+    const handleToggleClick = () => {
+        htmlEl.classList.toggle("dark");
+
+        const isDark = htmlEl.classList.contains("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+    };
+
+    document
+        .querySelector(".icon-theme-wrapper")
+        ?.addEventListener("click", handleToggleClick);
+</script>

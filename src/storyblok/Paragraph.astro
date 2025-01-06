@@ -24,7 +24,7 @@ const { blok } = Astro.props;
         nodes: {
             paragraph: () => ({
                 props: {
-                    class: "lg:text-lg mb-4 lg:mb-6",
+                    class: "lg:text-lg mb-4 lg:mb-6 text-mocha-900 dark:text-mocha-100",
                 },
             }),
         },
@@ -42,7 +42,7 @@ const { blok } = Astro.props;
             }),
             link: ({ attrs: { href } }) => ({
                 props: {
-                    class: "text-mocha-600 font-medium hover:underline",
+                    class: "text-mocha-600 dark:text-mocha-500 font-medium hover:underline",
                     href,
                     target: "_blank",
                     rel: "nofollow",
