@@ -11,29 +11,73 @@ import Layout from "@layouts/Layout.astro";
     import * as THREE from "three";
     import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-    const loader = new GLTFLoader();
+    // SCENE + CAMERA
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 1440 / 500, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / 500,
+        0.1,
+        1000,
+    );
 
+    camera.position.z = 2;
+
+    // MODEL LOADER
+
+    const loader = new GLTFLoader();
+
+    var model: THREE.Group<THREE.Object3DEventMap>;
     loader.load("../404.glb", (gltf) => {
-        scene.add(gltf.scene);
+        model = gltf.scene;
+        scene.add(model);
     });
 
+    // RENDERER
+
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(1440, 500);
+    renderer.setSize(window.innerWidth, 500);
     renderer.setClearColor(0x000000, 0);
     document.querySelector(".scene")?.appendChild(renderer.domElement);
+
+    // LIGHTS
 
     const directionalLight = new THREE.DirectionalLight(0xa1745e, 3);
     directionalLight.position.set(0, 1, 1).normalize();
     scene.add(directionalLight);
 
-    camera.position.z = 2.5;
+    // ROTATION
+
+    let targetRotationX = 0;
+    let targetRotationY = 0;
+
+    const sceneElement = document.querySelector(".scene");
+
+    sceneElement?.addEventListener("pointermove", (event: any) => {
+        const rect = sceneElement.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+        targetRotationX = y * Math.PI * 0.04;
+        targetRotationY = x * Math.PI * 0.04;
+    });
+
+    // ANIMATION
 
     function animate() {
         requestAnimationFrame(animate);
-        // controls.update();
+        if (model) {
+            model.rotation.x = THREE.MathUtils.lerp(
+                model.rotation.x,
+                targetRotationX,
+                0.03,
+            );
+            model.rotation.y = THREE.MathUtils.lerp(
+                model.rotation.y,
+                targetRotationY,
+                0.03,
+            );
+        }
+
         renderer.render(scene, camera);
     }
 
