@@ -61,6 +61,11 @@ import Layout from "@layouts/Layout.astro";
         targetRotationY = x * Math.PI * 0.04;
     });
 
+    sceneElement?.addEventListener("pointerleave", () => {
+        targetRotationX = 0;
+        targetRotationY = 0;
+    });
+
     // ANIMATION
 
     function animate() {
