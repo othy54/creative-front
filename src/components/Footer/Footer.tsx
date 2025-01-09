@@ -1,11 +1,19 @@
 
 import styles from './footer.module.css';
 import { motion, useScroll, useMotionTemplate, useTransform } from "motion/react";
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 
 const Footer = () => {
     const footer = useRef<HTMLElement | null>(null);
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            setIsMobile(true);
+        }
+    });
 
     const { scrollYProgress } = useScroll({
         target: footer,
@@ -23,9 +31,15 @@ const Footer = () => {
                 className={styles.container + " max-w-[1280px] min-h-[20vh] lg:min-h-[40vh] mx-auto pt-4 lg:pt-10 px-6 lg:px-8 flex justify-center items-center"}
             >
                 <div className={styles.wrapper}>
-                    <motion.div className={styles.logo + ' text-mocha-900 dark:text-mocha-100'} style={{ filter }}>
-                        CREATIVE-FRONT
-                    </motion.div>
+                    {isMobile ? (
+                        <div className={styles.logo + ' text-mocha-900 dark:text-mocha-100'}>
+                            CREATIVE-FRONT
+                        </div>
+                    ) : (
+                        <motion.div className={styles.logo + ' text-mocha-900 dark:text-mocha-100'} style={{ filter, willChange: "filter" }}>
+                            CREATIVE-FRONT
+                        </motion.div>
+                    )}
                 </div>
             </div>
             <div className="max-w-[1280px] mx-auto px-6">

@@ -3,25 +3,38 @@ import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout>
-    <div class="flex flex-col items-center justify-center min-h-[50vh]">
+    <div
+        class="flex flex-col items-center justify-center min-h-[30vh] lg:min-h-[50vh] wrapper"
+    >
         <div class="scene"></div>
+        <div class="text-mocha-900 text-2xl font-medium">
+            Oups, Il n'y a rien à faire ici !
+        </div>
+        <a
+            href="/"
+            class="mt-10 bg-mocha-500 hover:bg-mocha-600 focus:bg-mocha-700 px-6 py-4 rounded-md text-mocha-100 font-semibold"
+        >
+            Page d'accueil
+        </a>
     </div>
 </Layout>
 <script>
     import * as THREE from "three";
     import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
+    const wrapperH = document.querySelector(".wrapper")?.clientHeight || 500;
+
     // SCENE + CAMERA
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
         75,
-        window.innerWidth / 500,
+        window.innerWidth / wrapperH,
         0.1,
         1000,
     );
 
-    camera.position.z = 2;
+    camera.position.z = (7 * wrapperH) / window.innerWidth;
 
     // MODEL LOADER
 
@@ -36,7 +49,7 @@ import Layout from "@layouts/Layout.astro";
     // RENDERER
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, 500);
+    renderer.setSize(window.innerWidth, wrapperH);
     renderer.setClearColor(0x000000, 0);
     document.querySelector(".scene")?.appendChild(renderer.domElement);
 
@@ -64,6 +77,13 @@ import Layout from "@layouts/Layout.astro";
     sceneElement?.addEventListener("pointerleave", () => {
         targetRotationX = 0;
         targetRotationY = 0;
+    });
+
+    window.addEventListener("resize", () => {
+        renderer.setSize(window.innerWidth, wrapperH);
+        camera.aspect = window.innerWidth / wrapperH;
+        camera.updateProjectionMatrix();
+        camera.position.z = (7 * wrapperH) / window.innerWidth;
     });
 
     // ANIMATION
