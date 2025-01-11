@@ -11,6 +11,8 @@ import react from "@astrojs/react";
 
 import icon from "astro-icon";
 
+import netlify from "@astrojs/netlify";
+
 // @ts-ignore
 const env = loadEnv("", process.cwd(), "STORYBLOK");
 
@@ -20,6 +22,8 @@ export default defineConfig({
     responsiveImages: true,
     svg: true,
   },
+
+  output: 'server',
 
   integrations: [storyblok({
     accessToken: env.STORYBLOK_TOKEN,
@@ -43,4 +47,6 @@ export default defineConfig({
       https: true,
     },
   },
+
+  adapter: netlify(),
 });
