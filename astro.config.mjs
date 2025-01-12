@@ -23,8 +23,6 @@ export default defineConfig({
     svg: true,
   },
 
-  output: 'server',
-
   integrations: [storyblok({
     accessToken: env.STORYBLOK_TOKEN,
     components: {
