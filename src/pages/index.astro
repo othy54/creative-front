@@ -1,8 +1,11 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Articles from "@components/Articles.astro";
+import Loading from "@components/Loading.astro";
 ---
 
 <Layout>
-  <Articles server:defer> Loading... </Articles>
+  <Articles server:defer>
+    <Loading slot="fallback" />
+  </Articles>
 </Layout>
