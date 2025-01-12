@@ -1,5 +1,15 @@
 ---
-import { Icon } from "astro-icon/components";
+import ViewIcons from "./ViewIcons.astro";
+import { useStoryblokApi } from "@storyblok/astro";
+const storyblokApi = useStoryblokApi();
+
+const { data } = await storyblokApi.get("cdn/stories", {
+    content_type: "article",
+    version: import.meta.env.DEV ? "draft" : "published",
+    starts_with: "blog/",
+});
+
+const stories = data.stories;
 
 interface Article {
     slug: string;
@@ -12,47 +22,14 @@ interface Article {
     };
 }
 
-interface Articles {
-    [key: string]: Article;
-}
-
-const views = [
-    {
-        nameIcon: "material-symbols-light:grid-view-rounded",
-        dataView: "grid",
-    },
-    {
-        nameIcon: "material-symbols-light:lists-rounded",
-        dataView: "list",
-    },
-];
-
-const { articles } = Astro.props;
+// const { articles } = Astro.props;
 ---
 
 <div>
-    <div class="flex justify-end">
-        <ul
-            class="flex mb-4 border-mocha-900 dark:border-mocha-100 border-[1px] rounded-sm"
-        >
-            {
-                views.map((view) => (
-                    <li
-                        data-view={view.dataView}
-                        class="view-button p-1 border-mocha-900 dark:border-mocha-100 border-r-[1px] last:border-r-0 text-mocha-900 dark:text-mocha-100 hover:bg-mocha-900 dark:hover:bg-mocha-100 hover:text-mocha-100 dark:hover:text-mocha-900 cursor-pointer"
-                    >
-                        <Icon
-                            name={view.nameIcon}
-                            size={25}
-                        />
-                    </li>
-                ))
-            }
-        </ul>
-    </div>
+    <ViewIcons />
     <ul class="articles">
         {
-            articles.map((article: Article) => (
+            stories.map((article: Article) => (
                 <li class="border-[#00000010] border-[1px] rounded-lg overflow-clip flex">
                     <div class="card flex flex-col justify-between bg-white">
                         <a
@@ -122,24 +99,3 @@ const { articles } = Astro.props;
         }
     }
 </style>
-
-<script>
-    const views = document.querySelectorAll(".view-button");
-    const articleEl = document.querySelector(".articles");
-
-    views[0].classList.add("view--active");
-
-    views.forEach((view) => {
-        view.addEventListener("click", () => {
-            views.forEach((v) => {
-                v.classList.remove("view--active");
-            });
-            view.classList.add("view--active");
-            if (view.getAttribute("data-view") === "list") {
-                articleEl?.classList.add("articles--list");
-            } else {
-                articleEl?.classList.remove("articles--list");
-            }
-        });
-    });
-</script>
