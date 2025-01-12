@@ -22,11 +22,12 @@ interface Article {
     };
 }
 
-// const { articles } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <div>
     <ViewIcons />
+    <div>{title}</div>
     <ul class="articles">
         {
             stories.map((article: Article) => (

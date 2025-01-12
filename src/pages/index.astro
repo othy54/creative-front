@@ -5,7 +5,10 @@ import Loading from "@components/Loading.astro";
 ---
 
 <Layout>
-  <Articles server:defer>
+  <Articles
+    server:defer
+    title="hello"
+  >
     <Loading slot="fallback" />
   </Articles>
 </Layout>
