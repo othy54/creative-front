@@ -6,5 +6,8 @@ import { stories } from "@scripts/fetchArticles";
 ---
 
 <Layout>
-  <Articles articles={stories} />
+  <Articles
+    articles={stories}
+    server:defer
+  />
 </Layout>
