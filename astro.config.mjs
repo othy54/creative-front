@@ -35,7 +35,7 @@ export default defineConfig({
       codePen: "storyblok/CodePen",
       image: "storyblok/Picture",
     },
-    bridge: false,
+    bridge: true,
   }), tailwind(), react(), lenis(), icon()],
 
   vite: {
