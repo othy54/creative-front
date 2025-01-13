@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 localhost-key.pem
 localhost.pem
+
+.netlify

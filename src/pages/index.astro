@@ -1,10 +1,14 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Articles from "@components/Articles.astro";
-
-import { stories } from "@scripts/fetchArticles";
+import Loading from "@components/Loading.astro";
 ---
 
 <Layout>
-  <Articles articles={stories} />
+  <Articles
+    server:defer
+    title="hello"
+  >
+    <Loading slot="fallback" />
+  </Articles>
 </Layout>

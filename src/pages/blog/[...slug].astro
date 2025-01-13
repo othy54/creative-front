@@ -1,41 +1,32 @@
 ---
+export const prerender = false;
+
 import { useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
-import Layout from "../../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 
-export async function getStaticPaths() {
-    const sbApi = useStoryblokApi();
+const storyblokApi = useStoryblokApi();
+const slug = Astro.params.slug;
 
-    const { data } = await sbApi.get("cdn/stories", {
-        content_type: "article",
+let content;
+
+try {
+    const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
         version: import.meta.env.DEV ? "draft" : "published",
     });
-
-    const stories = Object.values(data.stories);
-
-    return stories.map((story: any) => {
-        return {
-            params: { slug: story.slug },
-        };
-    });
+    content = data.story.content;
+} catch (error) {
+    return Astro.redirect("/404");
 }
-
-const sbApi = useStoryblokApi();
-const { slug } = Astro.params;
-const { data } = await sbApi.get(`cdn/stories/blog/${slug}`, {
-    version: import.meta.env.DEV ? "draft" : "published",
-});
-
-const story = data.story;
 ---
 
 <Layout
-    title={story.content.metaTags.title}
-    description={story.content.metaTags.description}
-    imageToPreload={story.content.imageHero?.filename + "/m/624x0/"}
+    title={content.metaTags.title}
+    description={content.metaTags.description}
+    imageToPreload={content.imageHero?.filename + "/m/624x0/"}
 >
     <div>
-        <StoryblokComponent blok={story.content} />
+        <StoryblokComponent blok={content} />
     </div>
 </Layout>
 
