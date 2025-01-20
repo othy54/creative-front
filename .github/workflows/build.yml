@@ -27,9 +27,6 @@ jobs:
       - name: Build Astro project
         env:
             STORYBLOK_TOKEN: ${{ secrets.STORYBLOK_TOKEN }}
-        run: npm run build && npm run preview
-
-      - name: Run tests
-        run: npm run test
+        run: npm run build && npm run preview && npm run test
         
        
