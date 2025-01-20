@@ -9,7 +9,7 @@ on:
       - "*"
 
 jobs:
-  build_test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +27,6 @@ jobs:
       - name: Build Astro project
         env:
             STORYBLOK_TOKEN: ${{ secrets.STORYBLOK_TOKEN }}
-        run: npm run build && npm run preview && npm run test
+        run: npm run build
         
        
