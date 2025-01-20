@@ -1,4 +1,4 @@
-name: Test Astro Build
+name: CI/CD CREATIVE-FRONT
 
 on:
   push:
