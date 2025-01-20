@@ -50,12 +50,16 @@ const { articles } = Astro.props;
             }
         </ul>
     </div>
-    <ul class="articles">
+    <ul
+        data-cy="articles"
+        class="articles"
+    >
         {
             articles.map((article: Article) => (
                 <li class="border-[#00000010] border-[1px] rounded-lg overflow-clip flex">
                     <div class="card flex flex-col justify-between bg-white">
                         <a
+                            data-cy="article-link-image"
                             href={`/blog/${article.slug}`}
                             class="block"
                         >

@@ -1,8 +1,8 @@
 describe('Test articles', () => {
-    it('Find at least an article', () => {
-        cy.visit('https://localhost:4321/blog/');
-        const article = cy.get('.articles > li');
-        article.should('have.length.greaterThan', 0);
-        article.last().find('a').first().click();
-    })
+    it('Find at least one article', () => {
+        cy.visit('/blog/');
+        cy.get('[data-cy="articles"] > li').as('articles');
+        cy.get('@articles').should('have.length.greaterThan', 0);
+        cy.get('@articles').last().find('[data-cy="article-link-image"]').click();
+    });
 })

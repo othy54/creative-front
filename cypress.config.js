@@ -2,6 +2,7 @@ import { defineConfig } from 'cypress'
 
 export default defineConfig({
     e2e: {
-        supportFile: false
+        supportFile: false,
+        baseUrl: 'https://localhost:4321/',
     }
 })
