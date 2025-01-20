@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "cypress run"
   },
   "dependencies": {
     "@astrojs/react": "^4.1.2",
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@types/three": "^0.171.0",
     "@vitejs/plugin-basic-ssl": "^1.2.0",
+    "cypress": "^13.17.0",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1"
   },

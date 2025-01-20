@@ -20,6 +20,9 @@ export default defineConfig({
     responsiveImages: true,
     svg: true,
   },
+  devToolbar: {
+    enabled: false,
+  },
 
   integrations: [storyblok({
     accessToken: env.STORYBLOK_TOKEN,
