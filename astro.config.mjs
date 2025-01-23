@@ -36,7 +36,11 @@ export default defineConfig({
       image: "storyblok/Picture",
     },
     bridge: false,
-  }), tailwind(), react(), lenis(), icon(), partytown()],
+  }), tailwind(), react(), lenis(), icon(), partytown({
+    config: {
+      forward: ['dataLayer.push']
+    }
+  })],
 
   vite: {
     plugins: [basicSsl()],
