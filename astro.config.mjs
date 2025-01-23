@@ -38,7 +38,8 @@ export default defineConfig({
     bridge: false,
   }), tailwind(), react(), lenis(), icon(), partytown({
     config: {
-      forward: ['dataLayer.push']
+      forward: ['dataLayer.push'],
+      debug: true,
     }
   })],
 
