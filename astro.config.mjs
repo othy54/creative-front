@@ -11,6 +11,8 @@ import react from "@astrojs/react";
 
 import icon from "astro-icon";
 
+import partytown from "@astrojs/partytown";
+
 // @ts-ignore
 const env = loadEnv("", process.cwd(), "STORYBLOK");
 
@@ -34,7 +36,7 @@ export default defineConfig({
       image: "storyblok/Picture",
     },
     bridge: false,
-  }), tailwind(), react(), lenis(), icon()],
+  }), tailwind(), react(), lenis(), icon(), partytown()],
 
   vite: {
     plugins: [basicSsl()],
